@@ -2,6 +2,7 @@ $(document).ready(function() {
     const $carrierText = $('#carrierText');
     const $hiddenText = $('#hiddenText');
     const $outputText = $('#outputText');
+    const $decodedText = $('#decodedText');
     
     // 自定义加密密钥
     const SECRET_KEY = 'hZyrD#F#wJ%2stURs*%z';
@@ -81,7 +82,7 @@ $(document).ready(function() {
         const carrier = $carrierText.val().trim();
         const hidden = $hiddenText.val().trim();
         if (!carrier || !hidden) {
-            alert('请确保载体文本和隐藏信息都已输入。');
+            $decodedText.val('请确保载体文本和隐藏信息都已输入。');
             return;
         }
 
@@ -92,6 +93,7 @@ $(document).ready(function() {
         // 在载体文本的末尾添加标记和零宽字符
         const result = carrier + MARK_START + MARK_END + hiddenText;
         $outputText.val(result);
+        $decodedText.val('');
     });
 
     // 解析隐藏信息
@@ -101,13 +103,13 @@ $(document).ready(function() {
             text = $carrierText.val().trim();
         }
         if (!text) {
-            alert('请在载体文本框或结果框中粘贴包含隐藏信息的文本。');
+            $decodedText.val('请在载体文本框或结果框中粘贴包含隐藏信息的文本。');
             return;
         }
 
         // 检查是否包含标记符号
         if (!text.includes(MARK_START) || !text.includes(MARK_END)) {
-            alert('未找到隐藏信息标记，请确保文本包含正确格式的隐藏内容。');
+            $decodedText.val('未找到隐藏信息标记，请确保文本包含正确格式的隐藏内容。');
             return;
         }
 
@@ -116,16 +118,16 @@ $(document).ready(function() {
         if (encrypted) {
             const decrypted = customDecrypt(encrypted);
             if (decrypted) {
-                alert(`隐藏信息: ${decrypted}`);
+                $decodedText.val(decrypted);
                 // 清空其他输入框，将解析的文本放入载体文本框
                 $hiddenText.val('');
                 $outputText.val('');
                 $carrierText.val(text);
             } else {
-                alert('解析失败：文本格式不正确或非本工具加密的内容。');
+                $decodedText.val('解析失败：文本格式不正确或非本工具加密的内容。');
             }
         } else {
-            alert('未找到隐藏信息，请确保文本包含正确格式的隐藏内容。');
+            $decodedText.val('未找到隐藏信息，请确保文本包含正确格式的隐藏内容。');
         }
     });
 
@@ -134,6 +136,7 @@ $(document).ready(function() {
         $carrierText.val('');
         $hiddenText.val('');
         $outputText.val('');
+        $decodedText.val('');
     });
 
     // 添加复制功能
