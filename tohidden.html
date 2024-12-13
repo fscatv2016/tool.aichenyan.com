@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文字隐写工具</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/tohidden.css">
+    <script src="js/jquery.min.js"></script>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="nav-container">
+        <div class="nav-wrapper">
+            <!-- Logo -->
+            <div class="logo">
+                <a href="index.html">
+                    <img src="images/logo_chenyan.png" alt="ChenYan | 小工具在线工具">
+                </a>
+            </div>
+            
+            <!-- 汉堡菜单按钮 -->
+            <div class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <!-- 导航菜单 -->
+            <div class="nav-menu">
+                <a href="index.html" class="nav-item">首页</a>
+                
+                <div class="nav-dropdown">
+                    <a href="#" class="nav-item">常用工具</a>
+                    <div class="dropdown-content">
+                        <a href="password.html" class="dropdown-item">随机密码</a>
+                        <a href="tohidden.html" class="dropdown-item">文字隐写</a>
+                        <a href="todolist.html" class="dropdown-item">待办事项</a>
+                    </div>
+                </div>
+                
+                <div class="nav-dropdown">
+                    <a href="#" class="nav-item">开发工具</a>
+                    <div class="dropdown-content">
+                        <a href="unicode.html" class="dropdown-item">Unicode转换工具</a>
+                        <a href="md5.html" class="dropdown-item">MD5加密工具</a>
+                        <a href="urlencode.html" class="dropdown-item">URL编解码工具</a>
+                        <a href="https://json.aichenyan.com/" class="dropdown-item">JSON格式化工具</a>
+                    </div>
+                </div>
+                
+                <div class="nav-dropdown">
+                    <a href="#" class="nav-item">文本工具</a>
+                    <div class="dropdown-content">
+                        <a href="chinese.html" class="dropdown-item">中文简繁转换工具</a>
+                        <a href="topinyin.html" class="dropdown-item">汉字转拼音工具</a>
+                        <a href="tohidden.html" class="dropdown-item">文字隐写</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <header>
+            <h1>文字隐写工具</h1>
+            <div class="tool-intro">
+                <h3>工具介绍及使用方法</h3>
+                <p>文字隐写工具可以帮助您将文本信息隐藏在其他文本中，实现信息的隐秘传输和存储。通过这款工具，您可以将敏感信息嵌入到普通文本中，只有使用特定工具或密钥才能提取，适用于信息安全、隐私保护和数据隐藏等场景。</p>
+                <ol>
+                    <li>在输入框中输入或粘贴您希望用来隐藏信息的载体文本。</li>
+                    <li>在另一个输入框中输入您希望隐藏的文本信息。</li>
+                    <li>点击"生成"按钮，工具会将输入的文本信息嵌入到载体文本中，并生成一个包含隐藏信息的新文本。</li>
+                </ol>
+            </div>
+        </header>
+        
+        <div class="main">
+            <div class="input-group">
+                <div class="input-section">
+                    <label>显示文字：</label>
+                    <textarea id="carrierText" placeholder="请输入或粘贴的文本..."></textarea>
+                </div>
+                
+                <div class="input-section">
+                    <label>隐藏信息：</label>
+                    <textarea id="hiddenText" placeholder="请输入您希望隐藏的文本信息..."></textarea>
+                </div>
+            </div>
+
+            <div class="toolbar">
+                <button id="generateBtn" class="btn primary">生成隐写</button>
+                <button id="extractBtn" class="btn">解析内容</button>
+                <button id="clearBtn" class="btn">清空全部</button>
+            </div>
+            
+            <div class="output-section">
+                <label>结果：</label>
+                <textarea id="outputText" readonly placeholder="生成的文本将显示在这里..."></textarea>
+            </div>
+            
+            <div class="decoded-section">
+                <label>解析结果：</label>
+                <textarea id="decodedText" readonly placeholder="解析的隐藏信息将显示在这里..."></textarea>
+            </div>
+        </div>
+        
+        <div class="tool-intro-mobile">
+            <h3>工具介绍及使用方法</h3>
+            <p>文字隐写工具可以帮助您将文本信息隐藏在其他文本中，实现信息的隐秘传输和存储。通过这款工具，您可以将敏感信息嵌入到普通文本中，只有使用特定工具或密钥才能提取，适用于信息安全、隐私保护和数据隐藏等场景。</p>
+            <ol>
+                <li>在输入框中输入或粘贴您希望用来隐藏信息的载体文本。</li>
+                <li>在另一个输入框中输入您希望隐藏的文本信息。</li>
+                <li>点击"生成"按钮，工具会将输入的文本信息嵌入到载体文本中，并生成一个包含隐藏信息的新文本。</li>
+            </ol>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2024 aichenyan.com. All Rights Reserved.</p>
+            <p>友情链接：
+                <a href="https://nav.aichenyan.com" target="_blank">ChenYan导航站</a> |
+                <a href="https://json.aichenyan.com" target="_blank">在线JSON格式化</a>
+            </p>
+            <p>联系我们：<a href="mailto:cyan200707@gmail.com">cyan200707@gmail.com</a></p>
+        </div>
+    </footer>
+    <script src="js/common.js"></script>
+    <script src="js/tohidden.js"></script>
+</body>
+</html> 
